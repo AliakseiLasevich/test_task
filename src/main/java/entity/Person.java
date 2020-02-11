@@ -16,6 +16,12 @@ public class Person {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "patronymic")
+    private String patronymic;
+
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
@@ -45,6 +51,22 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public LocalDate getBirthDate() {
@@ -84,7 +106,9 @@ public class Person {
         return "Person{" +
                 "personId=" + personId +
                 ", name='" + name + '\'' +
-                ", birthDate='" + birthDate + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", birthDate=" + birthDate +
                 ", gender='" + gender + '\'' +
                 ", personSkills=" + personSkills +
                 ", personContactData=" + personContactData +

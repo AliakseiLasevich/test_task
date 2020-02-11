@@ -24,8 +24,12 @@ public class Runner {
         String query = sqlQueryBuilder.
                 select().
                 fromSourceTable("person").
-                endWith("name", "ов" ).
-                or().
+                equal("surname", "Морская").
+                and().
+                equal("name", "Мария").
+                and().
+                equal("patronymic", "Васильевна").
+                and().
                 equal("gender", "female").
                 build();
         Service service = context.getBean(Service.class);

@@ -26,13 +26,19 @@ public class QueryTest {
         String query = queryBuilder.
                 select().
                 fromSourceTable("person").
-                equal("name", "Морская Мария Васильевна").
+                equal("surname", "Морская").
+                and().
+                equal("name", "Мария").
+                and().
+                equal("patronymic", "Васильевна").
                 and().
                 equal("gender", "female").
                 build();
         List<Person> people = service.getUsers(query);
-        Assert.assertEquals("Морская Мария Васильевна", people.get(0).getName());
         Assert.assertEquals(1, people.size());
+        Assert.assertEquals("Морская", people.get(0).getSurname());
+        Assert.assertEquals("Мария", people.get(0).getName());
+        Assert.assertEquals("Васильевна", people.get(0).getPatronymic());
     }
 
     @Test
@@ -40,12 +46,12 @@ public class QueryTest {
         String query = queryBuilder.
                 select().
                 fromSourceTable("person").
-                endWith("name", "ов" ).
+                endWith("surname", "ов").
                 or().
                 equal("gender", "female").
                 build();
         List<Person> people = service.getUsers(query);
-        Assert.assertEquals(2, people.size());
+        Assert.assertEquals(3, people.size());
 
     }
 
