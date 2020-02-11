@@ -1,10 +1,10 @@
 package service;
 
-import entity.User;
+import entity.Person;
 
 import java.util.List;
 
 public interface Service {
-    public List<User> getUsers(String query);
+    public List<Person> getUsers(String query);
 
 }

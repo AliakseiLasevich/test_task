@@ -3,8 +3,8 @@ package entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER_CONTACT_DATA")
-public class UserContactData {
+@Table(name = "PERSON_CONTACT_DATA")
+public class PersonContactData {
 
     @Id
     @Column(name = "id_contact_data")
@@ -23,7 +23,7 @@ public class UserContactData {
     @Column(name = "messenger")
     private String messenger;
 
-    public UserContactData() {
+    public PersonContactData() {
     }
 
     public int getIdContactData() {
@@ -64,7 +64,7 @@ public class UserContactData {
 
     @Override
     public String toString() {
-        return "UserContactData{" +
+        return "PersonContactData{" +
                 "idContactData=" + idContactData +
                 ", phone='" + phone + '\'' +
                 ", site='" + site + '\'' +

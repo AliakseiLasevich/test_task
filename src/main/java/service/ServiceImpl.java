@@ -1,7 +1,7 @@
 package service;
 
 import dao.CvDao;
-import entity.User;
+import entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +14,7 @@ public class ServiceImpl implements Service {
     private CvDao cvDao;
 
     @Transactional
-    public List<User> getUsers(String query) {
+    public List<Person> getUsers(String query) {
         return cvDao.getUsers(query);
     }
 

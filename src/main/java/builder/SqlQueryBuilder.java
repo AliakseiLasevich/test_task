@@ -1,8 +1,8 @@
 package builder;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
+@Component
 public class SqlQueryBuilder implements QueryBuilder {
 
     private StringBuilder stringBuilder = new StringBuilder();
@@ -44,6 +44,15 @@ public class SqlQueryBuilder implements QueryBuilder {
 
     public SqlQueryBuilder or() {
         stringBuilder.append(" OR ");
+        return this;
+    }
+
+    public SqlQueryBuilder endWith(String column, String endWith){
+        if (limitersCount == 0) {
+            stringBuilder.append(" WHERE ");
+            limitersCount++;
+        }
+        stringBuilder.append(column + " LIKE '%" +endWith +"'");
         return this;
     }
 

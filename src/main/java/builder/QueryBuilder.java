@@ -17,4 +17,6 @@ public interface QueryBuilder {
 
     public abstract String build();
 
+    public abstract SqlQueryBuilder endWith(String column, String endWith);
+
 }

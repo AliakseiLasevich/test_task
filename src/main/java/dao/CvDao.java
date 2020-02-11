@@ -1,9 +1,9 @@
 package dao;
 
-import entity.User;
+import entity.Person;
 
 import java.util.List;
 
 public interface CvDao {
-    List<User> getUsers(String query);
+    List<Person> getUsers(String query);
 }

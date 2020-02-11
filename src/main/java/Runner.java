@@ -14,14 +14,20 @@ public class Runner {
 
     public static void main(String[] args) {
         QueryBuilder sqlQueryBuilder = context.getBean(QueryBuilder.class);
+//        String query = sqlQueryBuilder.
+//                select().
+//                fromSourceTable("person").
+//                equal("name", "Петр Петров").
+//                and().
+//                equal("gender", "male").
+//                build();
         String query = sqlQueryBuilder.
                 select().
-                fromSourceTable("user").
-                equal("name", "Петр Петров").
-                and().
-                equal("sex", "male").
+                fromSourceTable("person").
+                endWith("name", "ов" ).
+                or().
+                equal("gender", "female").
                 build();
-
         Service service = context.getBean(Service.class);
         service.getUsers(query).forEach(System.out::println);
 

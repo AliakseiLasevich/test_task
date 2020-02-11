@@ -1,6 +1,6 @@
 package dao;
 
-import entity.User;
+import entity.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,8 @@ public class CvDaoImpl implements CvDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<User> getUsers(String query) {
+    public List<Person> getUsers(String query) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.createNativeQuery(query, User.class).list();
+        return currentSession.createNativeQuery(query, Person.class).list();
     }
 }
