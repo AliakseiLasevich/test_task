@@ -24,7 +24,7 @@ public class SqlQueryBuilder implements QueryBuilder {
     }
 
     public SqlQueryBuilder fromSourceTable(String source) {
-        stringBuilder.append(" FROM " + source);
+        stringBuilder.append(" FROM " + source + " ");
         return this;
     }
 
@@ -47,17 +47,20 @@ public class SqlQueryBuilder implements QueryBuilder {
         return this;
     }
 
-    public SqlQueryBuilder endWith(String column, String endWith){
+    public SqlQueryBuilder endWith(String column, String endWith) {
         if (limitersCount == 0) {
             stringBuilder.append(" WHERE ");
             limitersCount++;
         }
-        stringBuilder.append(column + " LIKE '%" +endWith +"'");
+        stringBuilder.append(column + " LIKE '%" + endWith + "'");
         return this;
     }
 
     public String build() {
-        return stringBuilder.toString();
+        String result = stringBuilder.toString();
+        limitersCount = 0;
+        stringBuilder.setLength(0);
+        return result;
     }
 
 }

@@ -22,8 +22,8 @@ public class QueryTest {
     private QueryBuilder queryBuilder;
 
     @Test
-    public void shouldReturnConcreteUser() {
-        String query = queryBuilder.
+    public void shouldReturnConcretePerson() {
+        String concretePerson = queryBuilder.
                 select().
                 fromSourceTable("person").
                 equal("surname", "Морская").
@@ -34,7 +34,7 @@ public class QueryTest {
                 and().
                 equal("gender", "female").
                 build();
-        List<Person> people = service.getUsers(query);
+        List<Person> people = service.getUsers(concretePerson);
         Assert.assertEquals(1, people.size());
         Assert.assertEquals("Морская", people.get(0).getSurname());
         Assert.assertEquals("Мария", people.get(0).getName());
@@ -43,14 +43,14 @@ public class QueryTest {
 
     @Test
     public void shouldReturnAllUsersByParameters() {
-        String query = queryBuilder.
+        String usersByParameters = queryBuilder.
                 select().
                 fromSourceTable("person").
                 endWith("surname", "ов").
                 or().
                 equal("gender", "female").
                 build();
-        List<Person> people = service.getUsers(query);
+        List<Person> people = service.getUsers(usersByParameters);
         Assert.assertEquals(3, people.size());
 
     }
